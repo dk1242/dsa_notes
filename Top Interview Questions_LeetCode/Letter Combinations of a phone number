@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<string> letterCombinations(string digits) {
+        if(!digits.length())return {};
+        vector<string>res;
+        res.push_back("");
+        vector<string>dta={"abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
+        for(auto digit : digits){
+            vector<string> temp;
+            for(auto l : dta[digit-'2']){
+                for(auto cs : res){
+                    temp.push_back(cs+l);
+                }
+            }
+            res.swap(temp);
+        }
+        return res;
+    }
+};
