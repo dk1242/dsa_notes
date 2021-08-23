@@ -1,0 +1,25 @@
+class Solution {
+public:
+    void parenthesis(int pos, int open, int close, int n, vector<string>&str, string s){
+        
+        if(close+open == 2*n){
+            str.push_back(s);
+            return;
+        }
+        else{
+            if(open>close){
+               
+                parenthesis(pos+1, open, close+1, n, str, s+")");
+            }
+            if(open<n){
+                parenthesis(pos+1, open+1, close, n, str, s+"(");    
+            }
+        }
+    }
+    vector<string> generateParenthesis(int n) {
+        vector<string> str;
+        string s="";
+        parenthesis(0, 0, 0, n, str, s);
+        return str;
+    }
+};
